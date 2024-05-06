@@ -12,7 +12,9 @@ bot = commands.Bot(command_prefix='$', intents=discord.Intents.all())
 
 @bot.event
 async def on_ready():
-    print(Fore.GREEN + f'Bot logged in as', Fore.MAGENTA + str(bot.user), Fore.GREEN + 'withe the ID:', Fore.MAGENTA + str(bot.user.id))
+    print(Fore.GREEN + f'Bot logged in as', Fore.MAGENTA + str(bot.user), Fore.GREEN + 'with the the ID:', Fore.MAGENTA + str(bot.user.id))
+    for guild in bot.guilds:
+        print(Fore.GREEN + f'Connected to', Fore.MAGENTA + str(guild), Fore.GREEN + 'ID:', Fore.MAGENTA + str(guild.id))
     embed = discord.Embed(title=f'{bot.user} is now online! With the ID: {bot.user.id}',color=9055202,timestamp=datetime.datetime.now(datetime.timezone.utc))
     embed.set_footer(text='placeholder', icon_url=bot.user.display_avatar)
 
