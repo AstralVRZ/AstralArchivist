@@ -16,9 +16,9 @@ embedTime = datetime.datetime.now(datetime.timezone.utc)
 @bot.event
 async def on_ready():
     # Info + embed
-    print(Fore.GREEN + f"Bot logged in as", Fore.MAGENTA + str(bot.user), Fore.GREEN + "with the the ID:", Fore.MAGENTA + str(bot.user.id))
+    print(f"{Fore.GREEN}Bot logged in as {Fore.MAGENTA+str(bot.user)}, {Fore.GREEN}with the the ID: {Fore.MAGENTA+str(bot.user.id)}.{Fore.WHITE}")
     for guild in bot.guilds:
-        print(Fore.GREEN + f"Connected to", Fore.MAGENTA + str(guild), Fore.GREEN + "ID:", Fore.MAGENTA + str(guild.id))
+        print(f"{Fore.GREEN}Connected to {Fore.MAGENTA+str(guild)}, {Fore.GREEN}ID: {Fore.MAGENTA+str(guild.id)}.{Fore.WHITE}")
     embed = discord.Embed(title=f"{bot.user.name} is now online!", description=f"With the ID: {bot.user.id}", color=embedColor, timestamp=embedTime)
     embed.set_footer(text="AstralArchivist", icon_url=bot.user.display_avatar)
     channel = bot.get_channel(1239535111314210887)
@@ -30,7 +30,7 @@ async def on_ready():
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
             print(f"    - Loaded {Fore.MAGENTA + filename[:-3] + Fore.GREEN} cog")
-    print(Fore.GREEN + "Cogs loaded successfully.")  
+    print(f"{Fore.GREEN}Cogs loaded successfully.{Fore.WHITE}")
 
 # Send embed on user join
 @bot.event
