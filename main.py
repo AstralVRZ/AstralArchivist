@@ -25,7 +25,7 @@ async def on_ready():
     await channel.send(embed=embed)
 
     # Load cogs
-    print(Fore.GREEN + "Loading cogs:")
+    print(f"{Fore.GREEN}Loading cogs:{Fore.WHITE}")
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
