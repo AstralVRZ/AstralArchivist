@@ -17,7 +17,7 @@ class dice(commands.Cog):
     @commands.command(name="D4", help="Four sided dice, rolls a number between 1 and 4.")
     async def D4(self,ctx):
         roll = random.randint(1,4)
-        with open(rf'{filePath}\img/dice.gif', 'rb') as f:
+        with open(rf'{filePath}/img/dice.gif', 'rb') as f:
             picture = discord.File(f)
             await ctx.send(file=picture, delete_after=delay)
         await ctx.send(f"{ctx.author.display_name} rolled a {roll}")
@@ -26,7 +26,7 @@ class dice(commands.Cog):
     @commands.command(name="D6", help="Normal dice, rolls a number between 1 and 6.")
     async def D6(self,ctx):
         roll = random.randint(1,6)
-        with open(rf'{filePath}\img/dice.gif', 'rb') as f:
+        with open(rf'{filePath}/img/dice.gif', 'rb') as f:
             picture = discord.File(f)
             await ctx.send(file=picture, delete_after=delay)
         await ctx.send(f"{ctx.author.display_name} rolled a {roll}")
@@ -35,7 +35,7 @@ class dice(commands.Cog):
     @commands.command(name="D10", help="Ten sided dice, rolls a number between 1 and 10.")
     async def D10(self,ctx):
         roll = random.randint(1,10)
-        with open(rf'{filePath}\img/dice.gif', 'rb') as f:
+        with open(rf'{filePath}/img/dice.gif', 'rb') as f:
             picture = discord.File(f)
             await ctx.send(file=picture, delete_after=delay)
         await ctx.send(f"{ctx.author.display_name} rolled a {roll}")
@@ -44,7 +44,7 @@ class dice(commands.Cog):
     @commands.command(name="D20", help="Twenty sided dice, rolls a number between 1 and 20.")
     async def D20(self,ctx):
         roll = random.randint(1,20)
-        with open(rf'{filePath}\img/dice.gif', 'rb') as f:
+        with open(rf'{filePath}/img/dice.gif', 'rb') as f:
             picture = discord.File(f)
             await ctx.send(file=picture, delete_after=delay)
         await ctx.send(f"{ctx.author.display_name} rolled a {roll}")
