@@ -29,7 +29,7 @@ async def on_ready():
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
             await bot.load_extension(f"cogs.{filename[:-3]}")
-            print(f"    - Loaded {Fore.MAGENTA + filename[:-3] + Fore.GREEN} cog")
+            print(f"{Fore.GREEN}    - Loaded {Fore.MAGENTA + filename[:-3] + Fore.GREEN} cog{Fore.WHITE}")
     print(f"{Fore.GREEN}Cogs loaded successfully.{Fore.WHITE}")
 
 # Send embed on user join
