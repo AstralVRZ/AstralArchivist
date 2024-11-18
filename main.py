@@ -43,8 +43,4 @@ async def on_member_join(member):
     channel = bot.get_channel(987314407170265123)
     await channel.send(embed=embed)
 
-async def main():
-    async with bot:
-        await bot.start(token)
-
-asyncio.run(main())
+bot.run(token)
