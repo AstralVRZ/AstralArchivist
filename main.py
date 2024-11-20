@@ -3,7 +3,6 @@ from discord.ext import commands
 from colorama import Fore
 import datetime
 import os
-import asyncio
 
 with open("token", "r") as file:
     token = str(file.read())
