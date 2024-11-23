@@ -65,13 +65,15 @@ class roblox(commands.Cog):
         else:
             embed = discord.Embed(
                 title="No account found.",
-                description=f"No account with the name {name} could be found on Roblox",
+                description=f"No account with the name `{name}` could be found on Roblox",
                 color=embedColor,
                 timestamp=embedTime,
             )
-            file = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
+            icon = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
             embed.set_footer(text="ID Look Up", icon_url="attachment://roblox.png")
-            await ctx.send(file=file, embed=embed)
+            na = discord.File(f"{filePath}/img/na.png", filename="na.png")
+            embed.set_thumbnail(url="attachment://na.png")
+            await ctx.send(files=[icon, na], embed=embed)
             await ctx.message.add_reaction("❌")
 
     @commands.command(name="IDLookUp", aliases=["IDLU"], help="Gets the info from a Roblox profile from the provided ID.")
@@ -134,9 +136,11 @@ class roblox(commands.Cog):
                 color=embedColor,
                 timestamp=embedTime,
             )
-            file = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
+            icon = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
             embed.set_footer(text="ID Look Up", icon_url="attachment://roblox.png")
-            await ctx.send(file=file, embed=embed)
+            na = discord.File(f"{filePath}/img/na.png", filename="na.png")
+            embed.set_thumbnail(url="attachment://na.png")
+            await ctx.send(files=[icon, na], embed=embed)
             await ctx.message.add_reaction("❌")
 
 async def setup(bot):
