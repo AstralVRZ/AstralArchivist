@@ -8,8 +8,8 @@ import json
 
 filePath= Path('.')
 embedTime = datetime.datetime.now(datetime.timezone.utc)
-req_user = "https://users.roblox.com/v1/"
-req_thumbnail = "https://thumbnails.roblox.com/v1/users/avatar-bust"
+api_user = "https://users.roblox.com/v1/"
+api_thumbnail = "https://thumbnails.roblox.com/v1/users/avatar-bust"
 embedColor = 1645341
 
 class roblox(commands.Cog):
@@ -25,13 +25,13 @@ class roblox(commands.Cog):
         request_body = {'usernames': [name],'excludeBannedUsers': False}
         headers = {'Content-Type': 'application/json','Accept': 'application/json'}
         json_data = json.dumps(request_body)
-        response = requests.post(req_user+"usernames/users", headers=headers, data=json_data)
+        response = requests.post(api_user+"usernames/users", headers=headers, data=json_data)
         response_user = json.loads(response.text)
         if len(response_user['data']) > 0:
             id = str(response_user['data'][0]['id'])
-            request_user = requests.get(req_user + "users/" + id)
+            request_user = requests.get(api_user + "users/" + id)
             response_user = request_user.json()
-            request_thumbnail = requests.get(f"{req_thumbnail}?userIds={id}&size=352x352&format=Png&isCircular=false")
+            request_thumbnail = requests.get(f"{api_thumbnail}?userIds={id}&size=352x352&format=Png&isCircular=false")
             response_thumbnail = request_thumbnail.json()
 
             if response_user["hasVerifiedBadge"] == True:
@@ -59,7 +59,7 @@ class roblox(commands.Cog):
             )
             embed.set_thumbnail(url=response_thumbnail["data"][0]["imageUrl"])
             file = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
-            embed.set_footer(text="ID Look Up", icon_url="attachment://roblox.png")
+            embed.set_footer(text="Name lookup", icon_url="attachment://roblox.png")
             await ctx.send(file=file,embed=embed)
             await ctx.message.add_reaction("✅")
         else:
@@ -70,7 +70,7 @@ class roblox(commands.Cog):
                 timestamp=embedTime,
             )
             icon = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
-            embed.set_footer(text="ID Look Up", icon_url="attachment://roblox.png")
+            embed.set_footer(text="Name lookup", icon_url="attachment://roblox.png")
             na = discord.File(f"{filePath}/img/na.png", filename="na.png")
             embed.set_thumbnail(url="attachment://na.png")
             await ctx.send(files=[icon, na], embed=embed)
@@ -81,7 +81,7 @@ class roblox(commands.Cog):
         try:
             id = int(id)
             id = str(id)
-            request_user = requests.get(req_user + "users/" + id)
+            request_user = requests.get(api_user + "users/" + id)
             response_user = request_user.json()
 
             if "errors" in response_user:
@@ -93,11 +93,11 @@ class roblox(commands.Cog):
                         timestamp=embedTime,
                     )
                     file = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
-                    embed.set_footer(text="ID Look Up", icon_url="attachment://roblox.png")
+                    embed.set_footer(text="ID lookup", icon_url="attachment://roblox.png")
                     await ctx.send(file=file, embed=embed)
                     await ctx.message.add_reaction("❌")
             else:
-                request_thumbnail = requests.get(f"{req_thumbnail}?userIds={id}&size=352x352&format=Png&isCircular=false")
+                request_thumbnail = requests.get(f"{api_thumbnail}?userIds={id}&size=352x352&format=Png&isCircular=false")
                 response_thumbnail = request_thumbnail.json()
 
                 if response_user["hasVerifiedBadge"] == True:
@@ -125,7 +125,7 @@ class roblox(commands.Cog):
                 )
                 embed.set_thumbnail(url=response_thumbnail["data"][0]["imageUrl"])
                 file = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
-                embed.set_footer(text="ID Look Up", icon_url="attachment://roblox.png")
+                embed.set_footer(text="ID Lookup", icon_url="attachment://roblox.png")
                 await ctx.send(file=file,embed=embed)
                 await ctx.message.add_reaction("✅")
 
@@ -137,7 +137,7 @@ class roblox(commands.Cog):
                 timestamp=embedTime,
             )
             icon = discord.File(f"{filePath}/img/roblox.png", filename="roblox.png")
-            embed.set_footer(text="ID Look Up", icon_url="attachment://roblox.png")
+            embed.set_footer(text="ID lookup", icon_url="attachment://roblox.png")
             na = discord.File(f"{filePath}/img/na.png", filename="na.png")
             embed.set_thumbnail(url="attachment://na.png")
             await ctx.send(files=[icon, na], embed=embed)
