@@ -4,7 +4,7 @@ from colorama import Fore
 import datetime
 import os
 
-with open("token", "r") as file:
+with open("./token", "r") as file:
     token = str(file.read())
 
 bot = commands.Bot(command_prefix="$", intents=discord.Intents.all(), case_insensitive=True)
